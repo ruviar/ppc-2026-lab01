@@ -27,12 +27,21 @@ A tarefa I/O-bound quase não varia entre execuções, porque é só espera (`ti
 **Resultado medido:**
 
 ```
-1 core (sequencial)   :  25.79 s  -> 283146 primos
-16 cores (processos)  :  15.33 s  -> 283146 primos
-Speedup = 25.79 / 15.33 = 1.7x
+1 core (sequencial)   :  31.95 s  -> 283146 primos
+16 cores (processos)  :   3.78 s  -> 283146 primos
+Speedup = 31.95 / 3.78 = 8.4x
 ```
 
-O speedup real (1,7×) ficou bem abaixo da previsão. O número de primos coincide nas duas linhas (283146), por isso o resultado está correto — só o tempo variou menos do que o esperado. Isto foi corrido dentro do terminal de um assistente de programação, que pode limitar os recursos dados a processos filhos; a repetir num terminal normal (PowerShell) para confirmar o valor definitivo.
+A previsão cumpriu-se e até foi ligeiramente ultrapassada. O número de primos coincide nas duas linhas (283146), por isso o resultado paralelo está correto.
+
+Porque é que o speedup não é igual ao número de cores (16)?
+
+- Só há 8 cores físicos; os outros 8 são SMT, que não duplica a potência, apenas aproveita os momentos em que o core está parado à espera da memória. O teto realista fica em ~8–10×, não 16×.
+- Criar 16 processos em Windows (cada um arranca um Python novo) e distribuir o trabalho tem um custo que a versão sequencial não paga.
+- Os blocos com números grandes demoram mais, por isso no fim há cores parados à espera do último.
+- Com todos os cores a 100% o portátil baixa a frequência (menos turbo).
+
+O 8,4× está um pouco inflacionado: a versão sequencial demorou 31,95 s, contra 25,79 s numa execução anterior com o mesmo código (pouca RAM livre, programas em segundo plano, aquecimento). Com esse valor o speedup seria 25,79 / 3,78 ≈ 6,8×, por isso o valor real anda entre 6,8× e 8,4×. Uma primeira execução dentro do terminal de um assistente de programação deu só 1,7×, porque esse ambiente limitava os processos filhos.
 
 ## Diferença entre CPU-bound e I/O-bound
 
