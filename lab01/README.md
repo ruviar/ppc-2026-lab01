@@ -6,6 +6,20 @@
 
 ## English
 
+### How to run
+
+Requirements: [uv](https://docs.astral.sh/uv/) and Python 3.13+ (`uv python install 3.13`). Run from a normal PowerShell inside `lab01`.
+
+```powershell
+./script.ps1                               # everything, in order
+uv run python descobrir_maquina.py         # cores, memory, GIL
+uv run python medir.py                     # CPU-bound vs I/O-bound (add --real for real downloads)
+uv run python demo_docente.py              # 1 core vs all cores
+uv run python verificar_lab01.py           # checks the lab is complete
+uv run python comparar.py                  # extra: processes vs threads (with GIL)
+uv run --no-project --python 3.14t python comparar.py   # extra: the same without GIL
+```
+
 **Machine:** AMD Ryzen 7 8840HS (Windows 11) · confirmed with `descobrir_maquina.py` and `Get-CimInstance Win32_Processor`
 
 ### B — Your machine
@@ -56,6 +70,20 @@ In a CPU-bound task the processor is always computing (one core goes up to 100%)
 ---
 
 ## Português
+
+### Como executar
+
+Requisitos: [uv](https://docs.astral.sh/uv/) e Python 3.13+ (`uv python install 3.13`). Correr num PowerShell normal dentro de `lab01`.
+
+```powershell
+./script.ps1                               # tudo, por ordem
+uv run python descobrir_maquina.py         # cores, memória, GIL
+uv run python medir.py                     # CPU-bound vs I/O-bound (--real para downloads reais)
+uv run python demo_docente.py              # 1 core vs todos os cores
+uv run python verificar_lab01.py           # confirma que o lab está completo
+uv run python comparar.py                  # extra: processos vs threads (com GIL)
+uv run --no-project --python 3.14t python comparar.py   # extra: o mesmo sem GIL
+```
 
 **Máquina:** AMD Ryzen 7 8840HS (Windows 11) · confirmada com `descobrir_maquina.py` e `Get-CimInstance Win32_Processor`
 
