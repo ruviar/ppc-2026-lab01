@@ -61,8 +61,7 @@ Why is the speedup not equal to the number of cores (16)?
 - Blocks with larger numbers take longer, so at the end some cores sit idle waiting for the last one.
 - With all cores at 100% the laptop lowers its frequency (less turbo).
 
-The 8.4× is somewhat inflated: the sequential version took 31.95 s, versus 25.79 s in an earlier run of the same code (little free RAM, background programs, heat). With that value the speedup would be 25.79 / 3.78 ≈ 6.8×, so the real value lies between 6.8× and 8.4×. A first run inside a coding assistant's terminal gave only 1.7×, because that environment limited the child processes.
-
+The 8.4× is somewhat inflated: the sequential version took 31.95 s, versus 25.79 s in an earlier run of the same code (little free RAM, background programs, heat). With that value the speedup would be 25.79 / 3.78 ≈ 6.8×, so the real value lies between 6.8× and 8.4×.
 ### Difference between CPU-bound and I/O-bound
 
 In a CPU-bound task the processor is always computing (one core goes up to 100%) and only more cores help; in an I/O-bound task the processor is almost idle, waiting for the network or disk, so overlapping several waits at the same time (threads or asyncio) helps more than having more cores.
@@ -126,8 +125,7 @@ Porque é que o speedup não é igual ao número de cores (16)?
 - Os blocos com números grandes demoram mais, por isso no fim há cores parados à espera do último.
 - Com todos os cores a 100% o portátil baixa a frequência (menos turbo).
 
-O 8,4× está um pouco inflacionado: a versão sequencial demorou 31,95 s, contra 25,79 s numa execução anterior com o mesmo código (pouca RAM livre, programas em segundo plano, aquecimento). Com esse valor o speedup seria 25,79 / 3,78 ≈ 6,8×, por isso o valor real anda entre 6,8× e 8,4×. Uma primeira execução dentro do terminal de um assistente de programação deu só 1,7×, porque esse ambiente limitava os processos filhos.
-
+O 8,4× está um pouco inflacionado: a versão sequencial demorou 31,95 s, contra 25,79 s numa execução anterior com o mesmo código (pouca RAM livre, programas em segundo plano, aquecimento). Com esse valor o speedup seria 25,79 / 3,78 ≈ 6,8×, por isso o valor real anda entre 6,8× e 8,4×.
 ### Diferença entre CPU-bound e I/O-bound
 
 Numa tarefa CPU-bound o processador está sempre a calcular (um core sobe a 100%) e só ajuda ter mais cores; numa tarefa I/O-bound o processador está quase parado à espera de rede ou disco, por isso ajuda mais sobrepor várias esperas ao mesmo tempo (threads ou asyncio) do que ter mais cores.

@@ -6,7 +6,7 @@ Todo se ejecuta desde **PowerShell**, dentro de la carpeta `lab01`.
 cd C:\Users\ruvia\OneDrive\Desktop\kk\Ingenieria\ErasmusGuarda\PSCD\ppc-2026\lab01
 ```
 
-> **No lo ejecutes desde el terminal del asistente (Claude).** Limita los procesos y falsea los tiempos: ahí el speedup salió 1,7× y en un PowerShell normal 8,4×.
+> **Ejecútalo desde un PowerShell normal.**
 > Para medir, **enchufa el portátil** y cierra el navegador y otros programas pesados.
 
 ---
@@ -140,7 +140,7 @@ Después, vuelve a pasar el verificador: no debería salir el aviso de "alteraç
 | Acentos rotos | consola sin UTF-8 | `$env:PYTHONUTF8 = 1` |
 | `[FALHA] não estás no ambiente do projeto` | ejecutaste `python ...` sin `uv run` | ponle `uv run` delante |
 | `[FALHA] biblioteca X em falta` | librería no instalada | `uv add X` |
-| Speedup muy bajo (~1–2×) | terminal del asistente, batería, programas abiertos | PowerShell normal, enchufado, cerrar programas |
+| Speedup muy bajo (~1–2×) | batería, programas abiertos | PowerShell normal, enchufado, cerrar programas |
 | Speedup distinto en cada ejecución | es normal (turbo, temperatura, otros programas) | ejecutar 3 veces y quedarse con la mediana |
 | `GIL ativo: True` con 3.14t | alguna librería en C lo ha reactivado | con comparar.py no debería pasar |
 
